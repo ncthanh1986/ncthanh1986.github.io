@@ -6,7 +6,7 @@ categories: jekyll update
 ---
 
 ## Jekyll's advantages over Wordpress
-Wordpress is probably overkill. It has a famous 5 minute install, however, you will need to keep updating and maintaining. Everytime you switch web hosts, you will have to go through the installation process all over again. 
+Wordpress is probably overkill. It has a famous 5 minute install, however, you will need to keep updating and maintaining. Everytime you switch web hosts, you will have to go through the installation process all over again.
 
 Wordpress is a CMS (Content Management System) solution that uses a database (MySQL). Good web-hosting for Wordpress is expensive.
 
@@ -55,9 +55,9 @@ This is the **front matter**, where Jekyll starts to get really cool. The front 
 
 `title:  "Welcome to Jekyll!"` : post title is defined by this line, not the filename.
 
-`date:   2016-12-16 10:14:12 +1100` : date and time of the post. 
+`date:   2016-12-16 10:14:12 +1100` : date and time of the post.
 
-`categories: jekyll update` : how the post is categorized. Effectively, this line will create subfolder `jekyll/update` in the `_site` directory. Changing the categories will result in new folder/subfolders created instantly with the Jekyll Server running. 
+`categories: jekyll update` : how the post is categorized. Effectively, this line will create subfolder `jekyll/update` in the `_site` directory. Changing the categories will result in new folder/subfolders created instantly with the Jekyll Server running.
 
 ## Creating your first post in Jekyll
 Now let's go and create your first post. Navigate to the `_posts` folder, create a file named `2016-12-16-build-your-website-with-jekyll.markdown` and add the front matter below to the file:
@@ -71,7 +71,7 @@ categories: jekyll update
 ---
 ```
 
-As a result, an html file `build-your-website-wht-jekyll.html` will be created in the folder `root/_site/jekyll/update/2016/12/16` (as defined by the date and the category in the front matter). Notice if you set the date to a time in the future, a subsequent folder and html file won't be generated and the browser will return "NOT FOUND" error. 
+As a result, an html file `build-your-website-wht-jekyll.html` will be created in the folder `root/_site/jekyll/update/2016/12/16` (as defined by the date and the category in the front matter). Notice if you set the date to a time in the future, a subsequent folder and html file won't be generated and the browser will return "NOT FOUND" error.
 
 To insert an image to your post, create a directory called `assets` (or anything), put the images there, for example `example.png` and include the following in the post content:
 
@@ -79,7 +79,7 @@ To insert an image to your post, create a directory called `assets` (or anything
 ![My screenshot](/assets/images/example.png)
 {% endhighlight%}
 
-![My screenshot]({{site.url}}/assets/images/example.png)
+![My screenshot](assets/images/example.png)
 
 ## Markdown vs HTML
 
