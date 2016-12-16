@@ -52,20 +52,47 @@ By running `rake routes` in the terminal, you will see `resource :posts` creates
 | PATCH/PUT		|	/posts/:id   | posts#update       |	update a specific post|
 | DELETE 		|	/posts/:id   | posts#destroy	  |	delete a specific post|
 
-The `root 'posts#index'` routes the root path to the `posts#index` action, which means displaying a list of all posts. We should expect that by entering localhost:3000 in the browser, a list of all available post will be returned. However, in order for this feature to work we need another 2 things: 1. a posts#index action defined in the `postscontroller.rb`, 2. a view for the action, i.e. `app/views/posts/index.html.erb`.
+The `root 'posts#index'` routes the root path to the `posts#index` action, which displays a list of all posts.
 
-1. Add the index action to the `postscontroller.rb`
+This means entering `localhost:3000` in the browser will return a list of all available posts. However, in order for this feature to work we need 2 things: a posts#index action defined in the `postscontroller.rb` and a view for the action, i.e. `app/views/posts/index.html.erb`.
+
+1 - Add the index action to the `postscontroller.rb`
 
 {% highlight ruby %}
 def index
+    # assign all posts to variable@posts in creation time descending order
+    # i.e. the posts.first will return the latest one.
+    @posts = Post.all.order('created_at DESC')
 end
 {% endhighlight%}
 
-2. Create the file `app/views/posts/index.html.erb` and insert:
+2 - Create the file `app/views/posts/index.html.erb` and insert:
 
-{% highlight ruby %}
-Post index
+{% highlight eruby %}
+    <% @posts.each do |post| %>
+        <div class=”post_wrapper”>
+            <h2 class=”title”><%= link_to post.title, post %> </h2>
+            <p class=”date”><%= post.created_at.strftime(“%B, %d, %Y”) %> </p>
+        </div>
+    <% end %>
 {% endhighlight%}
+
+There isn't any posts yet, so we need to create some in order to test this feature. Before doing so we need to generate a post model with 2 field: `title` of type `string` and `body` of type `text`.
+
+{% highlight console %}
+rails generate model Post title:string body:text
+rails db:migrate
+{% endhighlight%}
+
+Go to `rails console` and create some posts for testing purpose by using the `.create` method:
+{% highlight console %}
+Post.create(title: "My first post", body: "Just a test")
+Post.create(title: "Second post", body: "Just a test")
+...etc...
+{% endhighlight%}
+
+Exit the console by hitting `Ctrl + D` then refresh the browser, you should see something like this:
+
 
 
 
