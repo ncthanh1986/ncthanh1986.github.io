@@ -79,7 +79,7 @@ To insert an image to your post, create a directory called `assets` (or anything
 ![My screenshot](/assets/images/example.png)
 {% endhighlight%}
 
-![My screenshot](/assets/images/example.png)
+![My screenshot]({{site.url}}/assets/images/example.png)
 
 ## Markdown vs HTML
 
