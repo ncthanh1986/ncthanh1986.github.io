@@ -173,6 +173,87 @@ Try this out by go to URL `localhost:3000/posts/1` (or any ID) or go to `localho
 
 Up to this point, our blog app can create a new post, show a single post and show a list of available posts.
 
+There is, however, no validation for the post model, i.e. the title and the body can be empty (have you tried it?). Now let's add some validation for the post.
+
+### 2.9. Add validation for the post model
+We don't want the post title and body to be empty. The title length can't be too short (minumum 5 characters). We do this by add the following to the `models/post.rb`:
+
+{% highlight ruby %}
+  validates :title, presence: true, length: {minimum: 5}
+  validates :body, presence: true
+{% endhighlight%}
+
+### 2.10. Add some error messages during validation
+We want our `new.html.erb` view to display the error messages if the new post is not valid. Inside the `new.html.erb`, under the `<%= form_for ... %>`, add the following:
+
+{% highlight eruby %}
+  <% if @post.errors.any? %>
+    <div>
+      <h2><%= pluralize(@post.errors.count, "error") %> prevented this post from saving</h2>
+      <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li> <%= msg %> </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+{% endhighlight%}
+
+### 2.11. Add the posts#edit and posts#update actions
+These actions are required to edit our blog post. Add the following to the `posts_controller.rb` (just right above `private`)
+
+{% highlight ruby %}
+  def edit
+    @post = Post.find(params[:id])
+  end
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(params[:post].permit(:title, :body))
+      redirect_to @post
+    else
+      render ‘edit’
+    end
+  end
+{% endhighlight%}
+
+### 2.12. Create the view for the posts#edit action. Introduce partial.
+Since post creation and post edition use similar forms (i.e. title, body, submit button), it makes sense to create a form template separately and deploy it in both `new.html.erb` and `edit.html.erb`. Such template is called partial, a file under the `app/views/posts` folder starting with an underscore '_'.
+
+Now, under `app/views/posts` create new file `_form.html.erb` and add the following:
+
+{% highlight ruby %}
+  <%= form_for @post do |f| %>
+    <p>
+      <% f.label :title %> <br>
+      <% f.text_field :title %>
+    </p>
+    <p>
+      <% f.label :body %> <br>
+      <% f.text_area :body %>
+    </p>
+    <p>
+      <% f.submit %>
+    </p>
+  <% end %>
+{% endhighlight%}
+
+Create the view `app/views/posts/edit.html.erb` and add the following:
+
+{% highlight eruby %}
+  <h1> Edit Post </h1>
+  <%= render 'form' %>
+{% endhighlight%}
+
+Change the view `app/views/posts/new.html.erb` to the following:
+{% highlight eruby %}
+  <h1> New Post </h1>
+  <%= render 'form' %>
+{% endhighlight%}
+
+Look how simple our views are! :camel
+
+
+
 
 
 
