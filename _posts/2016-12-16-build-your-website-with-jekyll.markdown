@@ -73,7 +73,9 @@ categories: jekyll update
 
 As a result, an html file `build-your-website-wht-jekyll.html` will be created in the folder `root/_site/jekyll/update/2016/12/16` (as defined by the date and the category in the front matter). Notice if you set the date to a time in the future, a subsequent folder and html file won't be generated and the browser will return "NOT FOUND" error.
 
-To insert an image to your post, create a directory called `assets` (or anything), put the images there, for example `example.png` and include the following in the post content:
+
+<div class="alert alert-sucess">To insert an image to your post, create a directory called `assets` (or anything), put the images there, for example `example.png` and include the following in the post content:</div>
+
 
 {% highlight markdown %}
 ![My screenshot](/assets/images/example.png)
@@ -83,11 +85,11 @@ To insert an image to your post, create a directory called `assets` (or anything
 
 ## Markdown vs HTML
 
-Markdown is not a replacement for HTML, or even close to it. Its syntax is very small, corresponding only to a very small subset of HTML tags. The idea is not to create a syntax that makes it easier to insert HTML tags. In my opinion, HTML tags are already easy to insert. The idea for Markdown is to make it easy to read, write, and edit prose. HTML is a publishing format; Markdown is a writing format. Thus, Markdown’s formatting syntax only addresses issues that can be conveyed in plain text.
+Markdown is not a replacement for HTML, or even close to it. Its syntax is very small, corresponding only to a very small subset of HTML tags. The idea is not to create a syntax that makes it easier to insert HTML tags. <code>In my opinion</code>, HTML tags are already easy to insert. The idea for Markdown is to make it easy to read, write, and edit prose. HTML is a publishing format; <kbd>Markdown</kbd> is a writing format. Thus, Markdown’s formatting syntax only addresses issues that can be conveyed in plain text.
 
 [More reading about Markdown vs HTML](https://daringfireball.net/projects/markdown/syntax#html)
 
-Markdown Cheatsheet can be found [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+<mark>Markdown</mark> Cheatsheet can be found [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 
 <h1 class="">Using Rogue for syntax highlighting in Jekyll</h1>

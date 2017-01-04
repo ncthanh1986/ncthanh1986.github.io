@@ -93,6 +93,8 @@ Post.create(title: "Second post", body: "Just a test")
 
 Exit the console by hitting `Ctrl + D` then refresh the browser, you should see something like this:
 
+Once your document is linked to a <i class="icon-provider-gdrive"></i> **Google Drive** or a <i class="icon-provider-dropbox"></i> **Dropbox** file, StackEdit will periodically (every 3 minutes) synchronize it by downloading/uploading any modification. A merge will be performed if necessary and conflicts will be detected.
+
 
 
 
